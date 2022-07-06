@@ -4,9 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Movie Finder App</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
+
+    <header id="nav-container" class="nav-bar">
+        <h1>Search<span class="flix">Flix</span></h1>
+    </header>
+
+    <main id="main-container" class="main">
+        <form class="search-form" id="search">
+            <label for="lang">Select a genre:</label>
+            <select name="genre" id="genre" class="genre-dropdown-menu">
+                <option value="comedy" class="dropdown-element">Comedy</option>
+                <option value="drama" class="dropdown-element">Drama</option>
+                <option value="romance" class="dropdown-element">Romance</option>
+                <option value="sci-fi" class="dropdown-element">Sci-Fi</option>
+                <option value="action" class="dropdown-element">Action</option>
+                <option value="family" class="dropdown-element">Family</option>
+                <option value="documentaries" class="dropdown-element">Documentaries</option>
+            </select>
+            <button id="submit">Search</button>
+        </form>
+
+        <section class="movie-container" id="genre-images">
+            <div class="images">
+                <div class="thumbnail-01"><img src="" alt=""></div>
+                <div class="thumbnail-02"><img src="" alt=""></div>
+                <div class="thumbnail-03"><img src="" alt=""></div>
+                <div class="thumbnail-04"><img src="" alt=""></div>
+                <div class="thumbnail-05"><img src="" alt=""></div>
+                <div class="thumbnail-03"><img src="" alt=""></div>
+            </div>
+        </section>
+
+    </main>
+   
     
+
+
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
