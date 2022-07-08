@@ -84,4 +84,7 @@ select {
   color: rgba(255, 255, 255, 0.6);
 }
 
+#user-bar {
+  background-color: white;
+}
 

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Finder App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
@@ -14,7 +15,7 @@
     </header>
 
     <main id="main-container" class="main">
-        <form class="search-form" id="search">
+        <!-- <form class="search-form" id="search">
             <label for="lang">Select a genre:</label>
             <select name="genre" id="genre" class="genre-dropdown-menu">
                 <option value="comedy" class="dropdown-element">Comedy</option>
@@ -37,8 +38,12 @@
                 <div class="thumbnail-05"><img src="" alt=""></div>
                 <div class="thumbnail-03"><img src="" alt=""></div>
             </div>
-        </section>
+        </section> -->
 
+        <section class="user-search-bar" id="user-bar">
+           <input type="text" placeholder="Search...">
+           <button class="btn btn-primary" button id="search-movie-name"> Search</button>
+        </section>
     </main>
    
     
