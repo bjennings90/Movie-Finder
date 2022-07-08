@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css
+    "> -->
     <title>Movie Finder App</title>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-
+      </script> 
     <header id="nav-container" class="nav-bar">
         <h1>Search<span class="flix">Flix</span></h1>
     </header>
@@ -38,6 +40,73 @@
                 <div class="thumbnail-03"><img src="" alt=""></div>
             </div>
         </section>
+
+        <!-- <section>
+            <script>
+                var url = 'https://imdb-api.com/en/API/Top250Movies/k_2si393kp';
+                console.log(url);
+                fetch(url)
+                  .then((response) => response.json())
+                  .then((data) => {
+                    // if we see a CORS error, we can’t use that API!
+                    console.log(data);
+                  });
+              </script>
+        </section> -->
+
+        <section class="posters-container" id="all-posters">
+            
+                <div class="poster" id="movie-0">
+                    <img src="" />
+                </div>
+
+                <div class="poster" id="movie-1">
+                    <img src="" />
+                </div>
+
+                <div class="poster" id="movie-2">
+                    <img src="" />
+                </div>
+                
+                <div class="poster" id="movie-3">
+                    <img src="" />
+                </div>
+
+                <div class="poster" id="movie-4">
+                    <img src="" />
+                </div>
+
+                <div class="poster" id="movie-5">
+                    <img src="" />
+                </div>
+
+                <div class="poster" id="movie-6">
+                    <img src="" />
+                </div>
+
+                <div class="poster" id="movie-7">
+                    <img src="" />
+                </div>
+
+                <div class="poster" id="movie-8">
+                    <img src="" />
+                </div>
+
+                <div class="poster" id="movie-9">
+                    <img src="" />
+                </div>
+
+                <div class="poster" id="movie-10">
+                    <img src="" />
+                </div>
+
+                <div class="poster" id="movie-11">
+                    <img src="" />
+                </div>
+           
+        </section>
+
+        <button class="load-12-more" id="load-12-more">Load 12 More Movies</button>
 
     </main>
    
