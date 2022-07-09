@@ -20,16 +20,20 @@
 
 // API IMDB Title for plot information
 
-// //Shows the movie plot and rating information
-// var movieDescription = 'https://imdb-api.com/en/API/Title/k_a62fqwzy/tt1375666/Ratings,Wikipedia'
-// fetch(movieDescription)
-//     .then(response => response.text())
-//     .then(data => console.log(data));
+//Shows the movie plot and rating information
+var movieDescription = 'https://imdb-api.com/en/API/Title/k_a62fqwzy/tt1375666/Ratings'
+fetch(movieDescription)
+    .then(response => response.text())
+    .then(data => console.log(data));
 
-//     console.log(movieDescription);
+    console.log(movieDescription);
 
-// Let Variables
-let searchMovie = document.getElementById('user-bar');
+
+
+
+
+// Let Variables for the streaming service function
+let searchMovie = document.getElementById('search-input');
 let searchMovieButton = document.getElementById('search-movie-name');
 
 // Looks up the streaming service 
@@ -51,11 +55,12 @@ fetch(streamingSite, options)
 }
 
 
-function streamingService() {
-
+function streamingService(data) {
+    "Streaming Service:" + data.locations[0].display_name
 }
 
 searchMovieButton.addEventListener('click', (evt) => {
+    evt.preventDefault();
     streamingServiceLookUp();
 
 });
