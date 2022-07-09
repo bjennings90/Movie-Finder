@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300&display=swap');
 
 :root {
+  --accent-color-white: #ffffff;
+  --accent-color-lt-blue: #b1d8fc;
   --background-color-drk-gray: #141414;
   --accent-bright-red: #ce2b5e;
   --accent-bright-purple: #b36cf8;
@@ -9,6 +14,10 @@
   --accent-md-gray: #363636;
   --accent-md-lt-gray: #535353;
   --accent-lt-gray: #676767;
+  --accent-button-gradient: linear-gradient(#ce2b5e, #ce2b5e, #ce2b5e, #ac0037, #ce2b5e );
+  --title: font-family: "Fjalla One";
+  --genre: font-family: "Roboto Condensed";
+  --description: font-family: "Abel";
 }
 
 * {
@@ -20,28 +29,72 @@
 body {
   font-family: "Roboto Condensed";
   background-color: var(--background-color-drk-gray);
+  width: 100%;
+  height: 100vh;
+  background-image: url(../images/movie-background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overscroll-behavior: none;
 }
 
-header {
-  padding: 25px;
+#nav-container {
+  overflow: hidden;
+  width: 100%;
+  height: 150px;
+  padding: 35px 10px 25px 10px;
+  align-items: center;
+  position: -webkit-sticky;
   position: sticky;
-  background-color: var(--accent-black);
+  z-index: 9999;
   top: 0;
+  background-color: var(--accent-black);
+}
+
+#nav-container::after {
+  content: "";
+  position: absolute;
+  z-index: 10000;
+  min-width: 100%;
+  left: -50px;
+  right: -50px;
+  top: 147px;
+  height: 10px;
+  background: #5f54f4;
+  /* Old browsers */
+  background: -moz-linear-gradient(left, #5f54f4 0%, #ce2b5e 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #5f54f4 0%, #ce2b5e 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #5f54f4 0%, #ce2b5e 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5f54f4', endColorstr='#ce2b5e', GradientType=1);
 }
 
 h1 {
+  margin-top: 0;
   color: var(--accent-bright-purple-blue);
-  font-family: "Roboto Condensed";
+  font-family: "Fjalla One";
   text-align: center;
-  font-size: 72px;
+  font-size: 76px;
+}
+
+.magnify {
+  position: relative; 
+  width: 40px;
+  top: 29px;
+  left: -21px;
+  z-index: 10003;
 }
 
 .flix {
+  font-family: "Abel";
+  font-size: 90px;
   color: var(--accent-bright-red);
   font-weight: 400;
 }
 
-main {
+.main-search {
   margin: 25px auto;
   width: 90%;
   justify-content: center;
@@ -83,5 +136,115 @@ select {
   background-color: rgba(206, 43, 94, 0.8);
   color: rgba(255, 255, 255, 0.6);
 }
+
+
+/* thumbnail section */
+
+.movie-thumbnails-container {
+  margin: 50px auto;
+  padding-top: 75px 0;
+}
+
+.thumbnail {
+  position: relative;
+  padding: 5px;
+  width: 150px;
+  height: 230px;
+  margin: 17px;
+  cursor: pointer;
+  transition: .3s all;
+  border-radius: 5px;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.thumbnail:hover {
+  transform: scale(1.3);
+  box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.9);
+}
+
+.thumbnail:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* background: linear-gradient(); */
+  background: #353abf;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #353abf 0%, #b2133d 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #353abf 0%, #b2133d 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #353abf 0%, #b2133d 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#353abf', endColorstr='#b2133d', GradientType=0);
+  opacity: 0;
+  transition: .3s all;
+  z-index: 2;
+}
+
+.thumbnail:hover:before {
+  opacity: 0.9;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.thumbnail .content {
+  position: relative;
+  z-index: 3;
+  opacity: 0;
+  transition: .3s all;
+}
+
+.thumbnail:hover .content {
+  opacity: 1;
+  transition: .3s all;
+}
+
+.title-el {
+  position: relative;
+  font-family: var(--title);
+  font-weight: bold;
+  color: var(--accent-color-white);
+  font-size: 18px;
+  top: -10px;
+}
+
+.genre {
+  position: relative;
+  font-family: var(--genre);
+  font-size: 12px;
+  top: -18px;
+  color: var(--accent-color-lt-blue);
+}
+
+.description {
+  position: relative;
+  font-family: "IBM Plex Sans Thai";
+  font-size: 9px;
+  line-height: 12px;
+  color: var(--accent-color-white);
+  font-weight: 200;
+  top: -17px;
+}
+
+.rating {
+  position: relative;
+  color: var(--accent-color-lt-blue);
+  font-size: 10px;
+  top: 8px;
+}
+
+
 
 

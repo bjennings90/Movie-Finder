@@ -5,15 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Finder App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
 
     <header id="nav-container" class="nav-bar">
-        <h1>Search<span class="flix">Flix</span></h1>
+        <div class="logo">
+            <h1>Search<span class="flix">Flix</span><img src="./assets/images/magnify.png" alt="magnifying-glass" class="magnify"></h1>
+    
+        </div>
     </header>
 
-    <main id="main-container" class="main">
+    <!-- <section id="main-container" class="main-search">
         <form class="search-form" id="search">
             <label for="lang">Select a genre:</label>
             <select name="genre" id="genre" class="genre-dropdown-menu">
@@ -27,23 +32,160 @@
             </select>
             <button id="submit">Search</button>
         </form>
+    </section> -->
 
-        <section class="movie-container" id="genre-images">
-            <div class="images">
-                <div class="thumbnail-01"><img src="" alt=""></div>
-                <div class="thumbnail-02"><img src="" alt=""></div>
-                <div class="thumbnail-03"><img src="" alt=""></div>
-                <div class="thumbnail-04"><img src="" alt=""></div>
-                <div class="thumbnail-05"><img src="" alt=""></div>
-                <div class="thumbnail-03"><img src="" alt=""></div>
+<div class="container movie-thumbnails-container" id="thumbnail-grid">
+    <div class="row">
+        <div class="col s12">
+            <div class="col thumbnail"><span class="img-element"><img src="./assets/images/batman.png" alt=""></span>
+                <div class="content">
+                    <h5 class="title"><span class="title-el">Movie Title</span></h5>
+                    <h6 class="genre"><span class="genre-el">Genre</span></h6>
+                    <p class="description"><span class="descript-el">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab, vero et maiores architecto quos
+                        eaque, autem voluptatem voluptate porro nesciunt similique atque sit consectet uripsum, dolor sit amet consectetur 
+                        adipisicing elit.
+                    </span></p>
+                    <p class="rating">Rating:<span class="rating-number"> 8.4</span> out of 10</p>
+                </div>
             </div>
-        </section>
+            <div class="col thumbnail"><span class="img-element"><img src="./assets/images/bigfoot.png" alt="" /></span>
+                <div class="content">
+                    <h5 class="title"><span class="title-el">Movie Title</span></h5>
+                    <h6 class="genre"><span class="genre-el">Genre</span></h6>
+                    <p class="description"><span class="descript-el">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab, vero et maiores architecto quos
+                        eaque, autem voluptatem voluptate porro nesciunt similique atque sit consectet uripsum, dolor sit amet consectetur
+                        adipisicing elit.
+                    </span></p>
+                    <p class="rating">Rating:<span class="rating-number"> 8.4</span> out of 10</p>
+                </div>
+            </div>
+            <div class="col thumbnail"><span class="img-element"><img src="./assets/images/blackpanther.png" alt="" /></span>
+                <div class="content">
+                    <h5 class="title"><span class="title-el">Movie Title</span></h5>
+                    <h6 class="genre"><span class="genre-el">Genre</span></h6>
+                    <p class="description"><span class="descript-el">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab, vero et maiores architecto quos
+                        eaque, autem voluptatem voluptate porro nesciunt similique atque sit consectet uripsum, dolor sit amet consectetur
+                        adipisicing elit.
+                    </span></p>
+                    <p class="rating">Rating:<span class="rating-number"> 8.4</span> out of 10</p>
+                </div>
+            </div>
+            <div class="col thumbnail"><span class="img-element"><img src="./assets/images/family.png" alt="" /></span>
+                <div class="content">
+                    <h5 class="title"><span class="title-el">Movie Title</span></h5>
+                    <h6 class="genre"><span class="genre-el">Genre</span></h6>
+                    <p class="description"><span class="descript-el">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab, vero et maiores architecto quos
+                        eaque, autem voluptatem voluptate porro nesciunt similique atque sit consectet uripsum, dolor sit amet consectetur
+                        adipisicing elit.
+                    </span></p>
+                    <p class="rating">Rating:<span class="rating-number"> 8.4</span> out of 10</p>
+                </div>
+            </div>
+            <div class="col thumbnail"><span class="img-element"><img src="./assets/images/gamer.png" alt="" /></span>
+                <div class="content">
+                    <h5 class="title"><span class="title-el">Movie Title</span></h5>
+                    <h6 class="genre"><span class="genre-el">Genre</span></h6>
+                    <p class="description"><span class="descript-el">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab, vero et maiores architecto quos
+                        eaque, autem voluptatem voluptate porro nesciunt similique atque sit consectet uripsum, dolor sit amet consectetur
+                        adipisicing elit.
+                    </span></p>
+                <p class="rating">Rating:<span class="rating-number"> 8.4</span> out of 10</p>
+                </div>
+            </div>
+            <div class="col thumbnail"><span class="img-element"><img src="./assets/images/glory.png" alt="" /></span>
+                <div class="content">
+                    <h5 class="title"><span class="title-el">Movie Title</span></h5>
+                    <h6 class="genre"><span class="genre-el">Genre</span></h6>
+                    <p class="description"><span class="descript-el">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab, vero et maiores architecto quos
+                        eaque, autem voluptatem voluptate porro nesciunt similique atque sit consectet uripsum, dolor sit amet consectetur
+                        adipisicing elit.
+                    </span></p>
+                    <p class="rating">Rating:<span class="rating-number"> 8.4</span> out of 10</p>
+                </div>
+            </div>
+            <div class="col thumbnail"><span class="img-element"><img src="./assets/images/halloween.png" alt="" /></span>
+                <div class="content">
+                    <h5 class="title"><span class="title-el">Movie Title</span></h5>
+                    <h6 class="genre"><span class="genre-el">Genre</span></h6>
+                    <p class="description"><span class="descript-el">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab, vero et maiores architecto quos
+                        eaque, autem voluptatem voluptate porro nesciunt similique atque sit consectet uripsum, dolor sit amet consectetur
+                        adipisicing elit.
+                    </span></p>
+                    <p class="rating">Rating:<span class="rating-number"> 8.4</span> out of 10</p>
+                </div>
+            </div>
+            <div class="col thumbnail"><span class="img-element"><img src="./assets/images/heat.png" alt="" /></span>
+                <div class="content">
+                    <h5 class="title"><span class="title-el">Movie Title</span></h5>
+                    <h6 class="genre"><span class="genre-el">Genre</span></h6>
+                    <p class="description"><span class="descript-el">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab, vero et maiores architecto quos
+                        eaque, autem voluptatem voluptate porro nesciunt similique atque sit consectet uripsum, dolor sit amet consectetur
+                        adipisicing elit.
+                    </span></p>
+                    <p class="rating">Rating:<span class="rating-number"> 8.4</span> out of 10</p>
+                </div>
+            </div>
+            <div class="col thumbnail"><span class="img-element"><img src="./assets/images/ivorygame.png" alt="" /></span>
+                <div class="content">
+                    <h5 class="title"><span class="title-el">Movie Title</span></h5>
+                    <h6 class="genre"><span class="genre-el">Genre</span></h6>
+                    <p class="description"><span class="descript-el">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab, vero et maiores architecto quos
+                        eaque, autem voluptatem voluptate porro nesciunt similique atque sit consectet uripsum, dolor sit amet consectetur
+                        adipisicing elit.
+                    </span></p>
+                    <p class="rating">Rating:<span class="rating-number"> 8.4</span> out of 10</p>
+                </div>
+            </div>
+            <div class="col thumbnail"><span class="img-element"><img src="./assets/images/justwright.png" alt="" /></span>
+                <div class="content">
+                    <h5 class="title"><span class="title-el">Movie Title</span></h5>
+                    <h6 class="genre"><span class="genre-el">Genre</span></h6>
+                    <p class="description"><span class="descript-el">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab, vero et maiores architecto quos
+                        eaque, autem voluptatem voluptate porro nesciunt similique atque sit consectet uripsum, dolor sit amet consectetur
+                        adipisicing elit.
+                    </span></p>
+                    <p class="rating">Rating:<span class="rating-number"> 8.4</span> out of 10</p>
+                </div>
+            </div>
+            <div class="col thumbnail"><span class="img-element"><img src="./assets/images/topgun.png" alt="" /></span>
+                <div class="content">
+                    <h5 class="title"><span class="title-el">Movie Title</span></h5>
+                    <h6 class="genre"><span class="genre-el">Genre</span></h6>
+                    <p class="description"><span class="descript-el">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab, vero et maiores architecto quos
+                        eaque, autem voluptatem voluptate porro nesciunt similique atque sit consectet uripsum, dolor sit amet consectetur
+                        adipisicing elit.
+                    </span></p>
+                    <p class="rating">Rating:<span class="rating-number"> 8.4</span> out of 10</p>
+                </div>
+            </div>
+            <div class="col thumbnail"><span class="img-element"><img src="./assets/images/turningred.png" alt="" /></span>
+                <div class="content">
+                    <h5 class="title"><span class="title-el">Movie Title</span></h5>
+                    <h6 class="genre"><span class="genre-el">Genre</span></h6>
+                    <p class="description"><span class="descript-el">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab, vero et maiores architecto quos
+                        eaque, autem voluptatem voluptate porro nesciunt similique atque sit consectet uripsum, dolor sit amet consectetur
+                        adipisicing elit.
+                    </span></p>
+                    <p class="rating">Rating:<span class="rating-number"> 8.4</span> out of 10</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    </main>
-   
-    
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
