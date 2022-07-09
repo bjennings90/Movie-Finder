@@ -20,23 +20,9 @@
 
 // API IMDB Title for plot information
 
-//Shows the movie plot and rating information
-var movieDescription = 'https://imdb-api.com/en/API/Title/k_a62fqwzy/tt1375666/Ratings'
-fetch(movieDescription)
-    .then(response => response.text())
-    .then(data => console.log(data));
-
-    console.log(movieDescription);
 
 
-
-
-
-// Let Variables for the streaming service function
-let searchMovie = document.getElementById('search-input');
-let searchMovieButton = document.getElementById('search-movie-name');
-
-// Looks up the streaming service 
+// Looks up the streaming services for UTELLY
 const options = {
     method: 'GET',
     headers: {
@@ -45,6 +31,31 @@ const options = {
     }
 };
 
+
+// Let Variables for the streaming service function
+let searchMovie = document.getElementById('search-input');
+let searchMovieButton = document.getElementById('search-movie-name');
+
+//Shows the movie plot and rating information
+function showPlot() {
+let movieDescription = 'https://imdb-api.com/en/API/SearchMovie/k_a62fqwzy/' + searchMovie.value
+fetch(movieDescription)
+    .then(response => response.json())
+    .then(data => console.log(data));
+
+    console.log(movieDescription);
+};
+
+// this will be the main function that will display all the information about the movie
+function displayDescription(id) {
+    'https://imdb-api.com/en/API/Title/k_a62fqwzy/' + id + '/Ratings'
+    response.plot // shows the movie plot, needs to be linked to a variable and HTML
+    response.ratings.imDb // shows IMDB's rating of the movie, needs to be linked ot a variable and HTML
+}
+
+
+
+// Utelly streamign services look up. 
 function streamingServiceLookUp() {
 var streamingSite = 'https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=' + searchMovie.value; 
 fetch(streamingSite, options)
@@ -56,11 +67,12 @@ fetch(streamingSite, options)
 
 
 function streamingService(data) {
-    "Streaming Service:" + data.locations[0].display_name
+    = "Streaming Service:" + data.locations[0].display_name // need to add in a variable name and link it to the HTML
 }
 
+// Search button name, when clicked it should bring up the movie. 
 searchMovieButton.addEventListener('click', (evt) => {
     evt.preventDefault();
     streamingServiceLookUp();
-
+    showPlot('tt10872600');
 });
