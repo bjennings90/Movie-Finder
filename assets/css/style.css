@@ -264,14 +264,12 @@ button:hover {
   font-weight: bold;
   color: var(--accent-color-white);
   font-size: 18px;
-  top: -10px;
 }
 
 .genre {
   position: relative;
   font-family: var(--genre);
   font-size: 12px;
-  top: -18px;
   color: var(--accent-color-lt-blue);
 }
 
@@ -282,14 +280,13 @@ button:hover {
   line-height: 12px;
   color: var(--accent-color-white);
   font-weight: 200;
-  top: -17px;
+  padding-bottom: 5px;
 }
 
 .rating {
   position: relative;
   color: var(--accent-color-lt-blue);
   font-size: 10px;
-  top: 8px;
 }
 
 
