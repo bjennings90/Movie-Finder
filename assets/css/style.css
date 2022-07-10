@@ -129,6 +129,13 @@ h1 {
   padding-top: 55px;
 }
 
+/* .search-form {
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  
+} */
+
 label {
   color: var(--accent-lt-gray);
   font-size: 20px;
@@ -341,6 +348,33 @@ button:hover, button:focus {
   background-color: #ac0037;
   color: var(--accent-color-white);
   border: 1px solid var(--accent-bright-red);
+}
+
+.posters-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.poster img {
+  background-color: green;
+  width: 215px;
+  height: 330px;
+  margin: 7px;
+}
+
+.load-12-more {
+  font-size: 16px;
+  border: none;
+  background-color: var(--accent-bright-red);
+  padding: 10px 20px;
+  color: white;
+  font-size: 16px;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.5s;
+  border: 2px solid var(--accent-bright-red);
+  margin-top: 20px;
 }
 
 
