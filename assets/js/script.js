@@ -2,15 +2,17 @@
 var quoteUrl = "https://movie-quote-api.herokuapp.com/v1/quote?censored"; // fetch this for random
 var allPosters = document.querySelector("#thumbnail-grid");
 var quoteArray = [1];
+var movieUrl = "https://imdb-api.com/en/API/Top250Movies/k_z6yhwe7s";
 
-    // var url = "https://imdb-api.com/en/API/Top250Movies/k_z6yhwe7s"; 
-    //             console.log(url);
-    //             fetch(url)
-    //               .then((response) => response.json())
-    //               .then((data) => {
-    //                 console.log(data);
-    //                 moviePosters(data)
-    //               });
+
+// var url = "https://imdb-api.com/en/API/Top250Movies/k_z6yhwe7s"; 
+//       console.log(url);
+//       fetch(url)
+//       .then((response) => response.json())
+//       .then((data) => {
+//       console.log(data);
+//         moviePosters(data)
+//     });
 
   // function moviePosters(data) {
   //   for (var i = 0; i < data.length; i++) {
@@ -35,7 +37,7 @@ var quoteArray = [1];
   // var img = document.querySelector("#zero");
   // console.log(img);
 
-  
+
 
 // get random quote function targeting the H1 "quote" class:
   function getRandomQuote(data) {
