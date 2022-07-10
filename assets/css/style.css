@@ -94,10 +94,10 @@ select {
 
 .posters-container {
   display: flex;
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
-.poster {
+.poster img {
   background-color: green;
   width: 215px;
   height: 330px;
