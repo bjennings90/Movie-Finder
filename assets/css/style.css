@@ -15,6 +15,7 @@
   --accent-md-gray: #363636;
   --accent-md-lt-gray: #535353;
   --accent-lt-gray: #676767;
+  --accent-md-lt-gray: #8e8e8e;
   --accent-lighter-gray: #c7c7c7;
   --accent-button-gradient: linear-gradient(#ce2b5e, #ce2b5e, #ce2b5e, #ac0037, #ce2b5e );
   --title: font-family: "Fjalla One";
@@ -36,6 +37,7 @@ body {
   background-image: url(../images/movie-background-2.png);
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   background-position: center;
   overscroll-behavior: none;
 }
@@ -129,13 +131,6 @@ h1 {
   padding-top: 55px;
 }
 
-/* .search-form {
-  display:flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  
-} */
-
 label {
   color: var(--accent-lt-gray);
   font-size: 20px;
@@ -164,8 +159,8 @@ select {
   font-size: 18px;
 }
 
-.emoji-dropdown-menu, .genre-dropdown-menu {
-  width: 120px;
+.emoji-dropdown-menu {
+  width: 90px;
 }
 
 .genre-m-left {
@@ -314,14 +309,15 @@ button:hover, button:focus {
 }
 
 .quote-subhead {
-  color: var(--accent-md-lt-gray);
+  color: var(--accent-lt-gray);
   font-size: 20px;
 }
 
 .quote {
-  margin-top: 15px;
-  font-size: 32px;
-  color: var(--accent-lt-gray);
+  margin-top: 10px;
+  padding: 0 35px;
+  font-size: 24px;
+  color: var(--accent-md-lt-gray);
   line-height: 47px;
 }
 
@@ -331,10 +327,11 @@ button:hover, button:focus {
   position: relative;
   text-align: center;
   justify-content: center;
-  background-color: transparent;
+  align-items: center;
+  background-color: var(--accent-bright-red);
   top: -10px;
-  border: 1px solid var(--accent-lt-gray);
-  color: var(--accent-lt-gray);
+  border: 1px solid var(--accent-bright-red);
+  color: var(--accent-color-white);
   font-size: 14px;
   letter-spacing: 1px;
   width: 100px;
@@ -346,8 +343,6 @@ button:hover, button:focus {
 
 .random-quote-btn:hover, .random-quote-btn:focus {
   background-color: #ac0037;
-  color: var(--accent-color-white);
-  border: 1px solid var(--accent-bright-red);
 }
 
 .posters-container {
@@ -367,7 +362,7 @@ button:hover, button:focus {
   border: none;
   background-color: var(--accent-bright-red);
   padding: 10px 20px;
-  color: white;
+  color: var(--accent-color-white);
   font-size: 16px;
   letter-spacing: 1px;
   border-radius: 5px;
