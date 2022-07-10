@@ -38,6 +38,7 @@ var allPosters = document.querySelector("#all-posters");
 
       allPosters.append(image);
     }
+    
 //   document.querySelector("#zero").setAttribute("src",data.items[i].image);
 //   console.log(data.items[i]);
   
