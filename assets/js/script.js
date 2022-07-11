@@ -1,6 +1,5 @@
 
 var quoteUrl = "https://movie-quote-api.herokuapp.com/v1/quote?censored"; // fetch this for random
-// var movieUrl = "https://imdb-api.com/en/API/Top250Movies/k_z6yhwe7s";
 
 let forwardListener;
 let backwardListener;
@@ -15,14 +14,14 @@ function displayMovies(genre) {
         });
 }
 
-
 function displayTwelve(start){
     clearGrid();
     let dataStorage = window.localStorage.getItem('Movies');
     let data = JSON.parse(dataStorage);
 
     for (let i = start; i < start + 12; i++) {
-        let image = data.results[i].image;
+        let image = data.results[i].image.replace(/\/original\//g,"/170x250/");
+        console.log(image);
         let title = data.results[i].title; 
         let year = data.results[i].description;
         let genres = data.results[i].genres;
@@ -31,11 +30,11 @@ function displayTwelve(start){
 
         createMovieElement(title, year, genres, rating, plot, image); 
     }
-    if (start == 0 ) {
-        document.getElementById("previous-btn").style.display = "none"; 
-    } else {
-        document.getElementById("previous-btn").style.display = "block";
-    }
+    // if (start === 0 ) {
+    //     document.getElementById("next-btn").style.display = "none"; // <<< ERROR IN CONSOLE >>>
+    // } else {
+    //     document.getElementById("next-btn").style.display = "block";
+    // }
 
     // Alter event listener for display next 12 button with correct offset
     if (forwardListener != null) {
@@ -45,13 +44,11 @@ function displayTwelve(start){
     document.getElementById("next-btn").addEventListener("click", forwardListener);
 
     if (backwardListener != null) {
-        document.getElementById("previous-btn").removeEventListener("click", backwardListener);        
+        document.getElementById("next-btn").removeEventListener("click", backwardListener);        
     }
     backwardListener = () => displayTwelve(start-12);
-    document.getElementById("previous-btn").addEventListener("click", backwardListener);
-
+    document.getElementById("next-btn").addEventListener("click", backwardListener);
 }
-
 
 // creating elements for the Genre movie selection
 function createMovieElement(title, year, genres, rating, plot, image) {
@@ -87,12 +84,11 @@ function createMovieElement(title, year, genres, rating, plot, image) {
 
     movieName.textContent = title + " " + year;
     genreElement.textContent = genres;
-    moviePlot.textContent = plot;
-    movieRating.textContent = "Rating: " + rating + " out of 10";   
+    moviePlot.textContent = plot || "There is no description for this movie.";
+    movieRating.textContent = rating? "Rating: " + rating + " out of 10": ("No rating for this movie.");
     moviePoster.src = image;
     
 }
-
 
 // This function will show the selected movie genre when the user chooses it from the drop down menu
 function chooseGenre() {
@@ -149,15 +145,22 @@ document.getElementById('mood-btn').addEventListener("click", () => chooseGenre(
       getRandomQuote(quoteArray[i]);
     }
   }
-
-// fetch random quote using URL:
-  document.querySelector(".random-quote-btn").addEventListener("click", function() {
+var onQuoteClick = function() {
     var quoteUrl = "https://movie-quote-api.herokuapp.com/v1/quote?censored=true"; 
     fetch(quoteUrl)
       .then((response) => response.json())
       .then((data) => {
-        getRandomQuote(data);
+        if (data.show === "The Wire") {
+            onQuoteClick()
+        } else {
+            getRandomQuote(data);
+        }
       });
       console.log("click");
-  });
+  }
+  
+// fetch random quote using URL:
+  document.querySelector(".random-quote-btn").addEventListener("click", onQuoteClick);
+
+  displayMovies("comedy");
 
