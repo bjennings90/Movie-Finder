@@ -20,7 +20,8 @@
 // Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 
 
-let listener;
+let forwardListener;
+let backwardListener;
 // This is the comedy movie display 
 function displayMovies(genre) {
     let movieUrl ='https://imdb-api.com/API/AdvancedSearch/k_a62fqwzy?title_type=feature,tv_movie&count=100&genres=' + genre
@@ -28,12 +29,12 @@ function displayMovies(genre) {
         .then(response => response.json())
         .then(data => {
             window.localStorage.setItem('Movies', JSON.stringify(data));
-            displayNextTwelve(0);
+            displayTwelve(0);
         });
 }
 
 
-function displayNextTwelve(start){
+function displayTwelve(start){
     clearGrid();
     let dataStorage = window.localStorage.getItem('Movies');
     let data = JSON.parse(dataStorage);
@@ -48,13 +49,27 @@ function displayNextTwelve(start){
 
         createMovieElement(title, year, genres, rating, plot, image); 
     }
-    // Alter event listener for display next 12 button with correct offset
-    if (listener != null) {
-        document.getElementById('next-btn').removeEventListener("click", listener);
+    if (start == 0 ) {
+        document.getElementById("previous-btn").style.display = "none"; 
+    } else {
+        document.getElementById("previous-btn").style.display = "block";
     }
-    listener = () => displayNextTwelve(start+12);
-    document.getElementById("next-btn").addEventListener("click", listener);
+
+    // Alter event listener for display next 12 button with correct offset
+    if (forwardListener != null) {
+        document.getElementById('next-btn').removeEventListener("click", forwardListener);
+    }
+    forwardListener = () => displayTwelve(start+12);
+    document.getElementById("next-btn").addEventListener("click", forwardListener);
+
+    if (backwardListener != null) {
+        document.getElementById("previous-btn").removeEventListener("click", backwardListener);        
+    }
+    backwardListener = () => displayTwelve(start-12);
+    document.getElementById("previous-btn").addEventListener("click", backwardListener);
+
 }
+
 
 // creating elements for the Genre movie selection
 function createMovieElement(title, year, genres, rating, plot, image) {
