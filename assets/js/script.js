@@ -1,11 +1,12 @@
 
 var quoteUrl = "https://movie-quote-api.herokuapp.com/v1/quote?censored"; // fetch this for random
+//key: k_6fj2w74m
 
 let forwardListener;
 let backwardListener;
 // This is the comedy movie display 
 function displayMovies(genre) {
-    let movieUrl ='https://imdb-api.com/API/AdvancedSearch/k_z6yhwe7s?title_type=feature,tv_movie&count=100&genres=' + genre
+    let movieUrl ='https://imdb-api.com/API/AdvancedSearch/k_5mdou5db?title_type=feature,tv_movie&count=12&genres=' + genre
     fetch(movieUrl)
         .then(response => response.json())
         .then(data => {
@@ -18,8 +19,8 @@ function displayTwelve(start){
     clearGrid();
     let dataStorage = window.localStorage.getItem('Movies');
     let data = JSON.parse(dataStorage);
-
-    for (let i = start; i < start + 12; i++) {
+    if (!data || !data.results) return
+    for (let i = 0; i < data.results.length; i++) {
         let image = data.results[i].image.replace(/\/original\//g,"/170x250/");
         console.log(image);
         let title = data.results[i].title; 
@@ -156,11 +157,11 @@ var onQuoteClick = function() {
             getRandomQuote(data);
         }
       });
-      console.log("click");
+      console.log("action");
   }
   
 // fetch random quote using URL:
   document.querySelector(".random-quote-btn").addEventListener("click", onQuoteClick);
 
-  displayMovies("comedy");
+  displayMovies("action");
 
