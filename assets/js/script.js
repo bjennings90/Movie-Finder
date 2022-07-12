@@ -1,30 +1,13 @@
 
-// Use a CSS framework other than Bootstrap.
-
-// Be deployed to GitHub Pages.
-
-// Be interactive (i.e: accept and respond to user input).
-
-// Use at least two server-side APIs.
-
-// Does not use alerts, confirms, or prompts (use modals).
-
-// Use client-side storage to store persistent data.
-
-// Be responsive.
-
-// Have a polished UI.
-
-// Have a clean repository that meets quality coding standards (file structure, naming conventions, follows best practices for class/id-naming conventions, indentation, quality comments, etc.).
-
-// Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
-
+var quoteUrl = "https://movie-quote-api.herokuapp.com/v1/quote?censored"; // fetch this for random
+//key: k_6fj2w74m
+// test comment
 
 let forwardListener;
 let backwardListener;
 // This is the comedy movie display 
 function displayMovies(genre) {
-    let movieUrl ='https://imdb-api.com/API/AdvancedSearch/k_a62fqwzy?title_type=feature,tv_movie&count=100&genres=' + genre
+    let movieUrl ='https://imdb-api.com/API/AdvancedSearch/k_5mdou5db?title_type=feature,tv_movie&count=100&genres=' + genre
     fetch(movieUrl)
         .then(response => response.json())
         .then(data => {
@@ -33,14 +16,14 @@ function displayMovies(genre) {
         });
 }
 
-
 function displayTwelve(start){
     clearGrid();
     let dataStorage = window.localStorage.getItem('Movies');
     let data = JSON.parse(dataStorage);
-
+    if (!data || !data.results) return
     for (let i = start; i < start + 12; i++) {
-        let image = data.results[i].image;
+        let image = data.results[i].image.replace(/\/original\//g,"/170x250/");
+        // console.log(image);
         let title = data.results[i].title; 
         let year = data.results[i].description;
         let genres = data.results[i].genres;
@@ -49,8 +32,8 @@ function displayTwelve(start){
 
         createMovieElement(title, year, genres, rating, plot, image); 
     }
-    if (start == 0 ) {
-        document.getElementById("previous-btn").style.display = "none"; 
+    if (start === 0 ) {
+        document.getElementById("previous-btn").style.display = "none"; // <<< ERROR IN CONSOLE >>>
     } else {
         document.getElementById("previous-btn").style.display = "block";
     }
@@ -67,9 +50,7 @@ function displayTwelve(start){
     }
     backwardListener = () => displayTwelve(start-12);
     document.getElementById("previous-btn").addEventListener("click", backwardListener);
-
 }
-
 
 // creating elements for the Genre movie selection
 function createMovieElement(title, year, genres, rating, plot, image) {
@@ -105,12 +86,11 @@ function createMovieElement(title, year, genres, rating, plot, image) {
 
     movieName.textContent = title + " " + year;
     genreElement.textContent = genres;
-    moviePlot.textContent = plot;
-    movieRating.textContent = "Rating: " + rating + " out of 10";   
+    moviePlot.textContent = plot || "There is no description for this movie.";
+    movieRating.textContent = rating? "Rating: " + rating + " out of 10": ("No rating for this movie.");
     moviePoster.src = image;
     
 }
-
 
 // This function will show the selected movie genre when the user chooses it from the drop down menu
 function chooseGenre() {
@@ -153,5 +133,36 @@ function clearGrid() {
     }
 }
 
-
 document.getElementById('mood-btn').addEventListener("click", () => chooseGenre());
+
+// get random quote function targeting the H1 "quote" class:
+  function getRandomQuote(data) {
+    var randomQuote = document.querySelector("#random-element");
+    var quote = document.querySelector(".quote");
+      quote.innerText = '"' + data.quote + '"' + '  - ' + data.show;
+      console.log(data);
+      randomQuote.quote;
+      
+    for (var i = 1; i <= data.length; i++) {
+      getRandomQuote(quoteArray[i]);
+    }
+  }
+var onQuoteClick = function() {
+    var quoteUrl = "https://movie-quote-api.herokuapp.com/v1/quote?censored=true"; 
+    fetch(quoteUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.show === "The Wire") {
+            onQuoteClick()
+        } else {
+            getRandomQuote(data);
+        }
+      });
+      console.log("action");
+  }
+  
+// fetch random quote using URL:
+  document.querySelector(".random-quote-btn").addEventListener("click", onQuoteClick);
+
+  displayMovies("action");
+

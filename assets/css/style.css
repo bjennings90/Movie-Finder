@@ -15,8 +15,9 @@
   --accent-md-gray: #363636;
   --accent-md-lt-gray: #535353;
   --accent-lt-gray: #676767;
+  --accent-md-lt-gray: #8e8e8e;
   --accent-lighter-gray: #c7c7c7;
-  --accent-button-gradient: linear-gradient(#ce2b5e, #ce2b5e, #ce2b5e, #ac0037, #ce2b5e );
+  --accent-button-gradient: linear-gradient(#ce2b5e, #ce2b5e, #ce2b5e, #ac0037, #ce2b5e);
   --title: font-family: "Fjalla One";
   --genre: font-family: "Roboto Condensed";
   --description: font-family: "Abel";
@@ -36,6 +37,7 @@ body {
   background-image: url(../images/movie-background-2.png);
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   background-position: center;
   overscroll-behavior: none;
 }
@@ -104,7 +106,7 @@ h1 {
 }
 
 .magnify {
-  position: relative; 
+  position: relative;
   width: 40px;
   top: 29px;
   left: -21px;
@@ -128,13 +130,6 @@ h1 {
   align-items: center;
   padding-top: 55px;
 }
-
-/* .search-form {
-  display:flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  
-} */
 
 label {
   color: var(--accent-lt-gray);
@@ -164,8 +159,8 @@ select {
   font-size: 18px;
 }
 
-.emoji-dropdown-menu, .genre-dropdown-menu {
-  width: 120px;
+.emoji-dropdown-menu {
+  width: 90px;
 }
 
 .genre-m-left {
@@ -191,8 +186,10 @@ button {
   transition: .3s ease-in-out;
 }
 
-button:hover, button:focus {
+button:hover,
+button:focus {
   background-color: #ac0037;
+  color: white;
 }
 
 .next-12-button {
@@ -232,7 +229,7 @@ button:hover, button:focus {
   position: absolute;
   top: 0;
   left: 0;
-  display: block;
+  display: flex;
   width: 100%;
   height: 100%;
   /* background: linear-gradient(); */
@@ -265,6 +262,8 @@ button:hover, button:focus {
 
 .thumbnail .content {
   position: relative;
+  display: flex;
+  flex-direction: column;
   z-index: 3;
   opacity: 0;
   transition: .3s all;
@@ -281,6 +280,11 @@ button:hover, button:focus {
   font-weight: bold;
   color: var(--accent-color-white);
   font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .genre {
@@ -297,7 +301,12 @@ button:hover, button:focus {
   line-height: 12px;
   color: var(--accent-color-white);
   font-weight: 200;
-  padding-bottom: 5px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
 }
 
 .rating {
@@ -314,14 +323,15 @@ button:hover, button:focus {
 }
 
 .quote-subhead {
-  color: var(--accent-md-lt-gray);
+  color: var(--accent-lt-gray);
   font-size: 20px;
 }
 
 .quote {
-  margin-top: 15px;
-  font-size: 32px;
-  color: var(--accent-lt-gray);
+  margin-top: 10px;
+  padding: 0 35px;
+  font-size: 24px;
+  color: var(--accent-md-lt-gray);
   line-height: 47px;
 }
 
@@ -331,10 +341,11 @@ button:hover, button:focus {
   position: relative;
   text-align: center;
   justify-content: center;
-  background-color: transparent;
+  align-items: center;
+  background-color: var(--accent-bright-red);
   top: -10px;
-  border: 1px solid var(--accent-lt-gray);
-  color: var(--accent-lt-gray);
+  border: 1px solid var(--accent-bright-red);
+  color: var(--accent-color-white);
   font-size: 14px;
   letter-spacing: 1px;
   width: 100px;
@@ -344,10 +355,9 @@ button:hover, button:focus {
   border-radius: 3px;
 }
 
-.random-quote-btn:hover, .random-quote-btn:focus {
+.random-quote-btn:hover,
+.random-quote-btn:focus {
   background-color: #ac0037;
-  color: var(--accent-color-white);
-  border: 1px solid var(--accent-bright-red);
 }
 
 .posters-container {
@@ -367,7 +377,7 @@ button:hover, button:focus {
   border: none;
   background-color: var(--accent-bright-red);
   padding: 10px 20px;
-  color: white;
+  color: var(--accent-color-white);
   font-size: 16px;
   letter-spacing: 1px;
   border-radius: 5px;
@@ -376,10 +386,3 @@ button:hover, button:focus {
   border: 2px solid var(--accent-bright-red);
   margin-top: 20px;
 }
-
-#user-bar {
-  background-color: white;
-}
-
-
-
