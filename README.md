@@ -19,7 +19,7 @@ Are you tired of Netflix suggesting your random films? Are you looking for a fun
   - 575px (Small devices - large cell phones)
 
 ## Website Link:
-https://dronetdevdesign.github.io/Dronet-DevDesign/
+https://bjennings90.github.io/Movie-Finder/
 
 ## This Website Created Using:
 * HTML 
