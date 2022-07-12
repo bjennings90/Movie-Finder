@@ -31,11 +31,11 @@ function displayTwelve(start){
 
         createMovieElement(title, year, genres, rating, plot, image); 
     }
-    // if (start === 0 ) {
-    //     document.getElementById("next-btn").style.display = "none"; // <<< ERROR IN CONSOLE >>>
-    // } else {
-    //     document.getElementById("next-btn").style.display = "block";
-    // }
+    if (start === 0 ) {
+        document.getElementById("previous-btn").style.display = "none"; // <<< ERROR IN CONSOLE >>>
+    } else {
+        document.getElementById("previous-btn").style.display = "block";
+    }
 
     // Alter event listener for display next 12 button with correct offset
     if (forwardListener != null) {
@@ -45,10 +45,10 @@ function displayTwelve(start){
     document.getElementById("next-btn").addEventListener("click", forwardListener);
 
     if (backwardListener != null) {
-        document.getElementById("next-btn").removeEventListener("click", backwardListener);        
+        document.getElementById("previous-btn").removeEventListener("click", backwardListener);        
     }
     backwardListener = () => displayTwelve(start-12);
-    document.getElementById("next-btn").addEventListener("click", backwardListener);
+    document.getElementById("previous-btn").addEventListener("click", backwardListener);
 }
 
 // creating elements for the Genre movie selection
