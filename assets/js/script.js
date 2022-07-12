@@ -6,7 +6,7 @@ let forwardListener;
 let backwardListener;
 // This is the comedy movie display 
 function displayMovies(genre) {
-    let movieUrl ='https://imdb-api.com/API/AdvancedSearch/k_5mdou5db?title_type=feature,tv_movie&count=12&genres=' + genre
+    let movieUrl ='https://imdb-api.com/API/AdvancedSearch/k_5mdou5db?title_type=feature,tv_movie&count=100&genres=' + genre
     fetch(movieUrl)
         .then(response => response.json())
         .then(data => {
@@ -20,9 +20,9 @@ function displayTwelve(start){
     let dataStorage = window.localStorage.getItem('Movies');
     let data = JSON.parse(dataStorage);
     if (!data || !data.results) return
-    for (let i = 0; i < data.results.length; i++) {
+    for (let i = start; i < start + 12; i++) {
         let image = data.results[i].image.replace(/\/original\//g,"/170x250/");
-        console.log(image);
+        // console.log(image);
         let title = data.results[i].title; 
         let year = data.results[i].description;
         let genres = data.results[i].genres;
