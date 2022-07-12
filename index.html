@@ -16,7 +16,7 @@
 <!-- START HEADER -->
 <header id="nav-container" class="nav-bar">
     <div class="logo">
-        <h1><span class="hashtag">#</span><span class="mood">MOOD</span><span class="flix">Flix</span><img src="./assets/images/magnify.png" alt="magnifying-glass" class="magnify"></h1>
+        <h1><a href="index.html"><span class="hashtag">#</span><span class="mood">MOOD</span><span class="flix">Flix</span><img src="./assets/images/magnify.png" alt="magnifying-glass" class="magnify"></a></h1>
     </div>
 </header>
 <!-- END HEADER -->
@@ -35,17 +35,7 @@
             <option value="documentaries" class="dropdown-element"><p class="emoji">&#129299;</p></option>
         </select>
         <button class="emoji-button" id="mood-btn">Search Mood</button>
-
-        <!-- <label for="select" class="label-heading genre-m-left">Select a genre:</label>
-        <select name="genre" id="select-genre" class="genre-dropdown-menu">
-            <option value="comedy" class="dropdown-element">Comedy</option>
-            <option value="drama" class="dropdown-element">Drama</option>
-            <option value="romance" class="dropdown-element">Romance</option>
-            <option value="sci-fi" class="dropdown-element">Sci-Fi</option>
-            <option value="action" class="dropdown-element">Action</option>
-            <option value="family" class="dropdown-element">Family</option>
-            <option value="documentaries" class="dropdown-element">Documentaries</option> -->
-        </select>
+        <button class="next-12-button" id="previous-btn">Previous 12</button>
         <button class="next-12-button" id="next-btn">Next 12</button>
 </section>
 <!-- END DROPDOWN MENU -->
@@ -53,10 +43,10 @@
 <!-- START MOVIE POSTER GRID -->
 <div class="container movie-thumbnails-container" id="thumbnail-grid">
     <div class="row">
-        <div class="col s12">
+        <div class="col s12" id="poster-column">
 
             <!-- CARD ONE -->
-            <div class="col thumbnail"><span class="img-element"><img src="./assets/images/batman.png" alt=""></span>
+            <div class="col thumbnail" id="poster-column"><span class="img-element"><img src="./assets/images/batman.png" alt=""></span>
                 <div class="content">
                     <h5 class="title">Movie Title</h5>
                     <h6 class="genre">Genre</h6>
@@ -228,8 +218,8 @@
 <!-- END MOVIE POSTER GRID -->
 
 <!-- START RANDOM MOVIE QUOTE -->
-<div class="random-quote">
-    <p class="quote-subhead">Famous movie quotes:</p>
+<div class="random-quote" id="random-element">
+    <p class="quote-subhead">Famous entertainment quotes:</p>
     <h1 class="quote">"Elementary, my dear Watson." The Adventures of Sherlock Holmes</h1>
     <div class="random-quote-btn">New Quote</div>
 </div>
