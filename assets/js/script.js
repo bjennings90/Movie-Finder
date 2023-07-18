@@ -5,9 +5,12 @@ var quoteUrl = "https://movie-quote-api.herokuapp.com/v1/quote?censored"; // fet
 
 let forwardListener;
 let backwardListener;
+
 // This is the comedy movie display 
 function displayMovies(genre) {
-    let movieUrl ='https://imdb-api.com/API/AdvancedSearch/k_5mdou5db?title_type=feature,tv_movie&count=100&genres=' + genre
+    // let movieUrl ='https://imdb-api.com/API/AdvancedSearch/k_5mdou5db?title_type=feature,tv_movie&count=100&genres=' + genre
+    let movieUrl = 'https://api.themoviedb.org/3/movie/popular?api_key=e500078a0f3e60374b44f445454ec0aa' 
+    console.log(movieUrl);
     fetch(movieUrl)
         .then(response => response.json())
         .then(data => {
@@ -22,18 +25,17 @@ function displayTwelve(start){
     let data = JSON.parse(dataStorage);
     if (!data || !data.results) return
     for (let i = start; i < start + 12; i++) {
-        let image = data.results[i].image.replace(/\/original\//g,"/170x250/");
-        // console.log(image);
+        let image = 'https://image.tmdb.org/t/p/w300' + data.results[i].poster_path.replace(/\/original\//g, "/170x250/");
         let title = data.results[i].title; 
-        let year = data.results[i].description;
-        let genres = data.results[i].genres;
-        let rating = data.results[i].imDbRating;
-        let plot = data.results[i].plot;
+        let year = data.results[i].release_date;
+        let genres = data.results[i].genre_id;
+        let rating = data.results[i].vote_average;
+        let plot = data.results[i].overview;
 
         createMovieElement(title, year, genres, rating, plot, image); 
     }
     if (start === 0 ) {
-        document.getElementById("previous-btn").style.display = "none"; // <<< ERROR IN CONSOLE >>>
+        document.getElementById("previous-btn").style.display = "none";
     } else {
         document.getElementById("previous-btn").style.display = "block";
     }
@@ -48,7 +50,8 @@ function displayTwelve(start){
     if (backwardListener != null) {
         document.getElementById("previous-btn").removeEventListener("click", backwardListener);        
     }
-    backwardListener = () => displayTwelve(start-12);
+    backwardListener = () => displayTwelve(start - 12);
+    console.log(backwardListener);
     document.getElementById("previous-btn").addEventListener("click", backwardListener);
 }
 
