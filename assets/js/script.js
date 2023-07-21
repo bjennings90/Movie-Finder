@@ -1,6 +1,3 @@
-// fetch this for random
-var quoteUrl = "https://movie-quote-api.herokuapp.com/v1/quote?censored";
-
 let forwardListener;
 let backwardListener;
 
@@ -145,31 +142,5 @@ function clearGrid() {
 document
   .getElementById("mood-btn")
   .addEventListener("click", () => chooseGenre());
-
-// get random quote function targeting the H1 "quote" class:
-function getRandomQuote(data) {
-  var randomQuote = document.querySelector("#random-element");
-  var quote = document.querySelector(".quote");
-  quote.innerText = '"' + data.quote + '"' + "  - " + data.show;
-  console.log(data);
-  randomQuote.quote;
-
-  for (var i = 1; i <= data.length; i++) {
-    getRandomQuote(quoteArray[i]);
-  }
-}
-var onQuoteClick = function () {
-  var quoteUrl = "https://movie-quote-api.herokuapp.com/v1/quote?censored=true";
-  fetch(quoteUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.show === "The Wire") {
-        onQuoteClick();
-      } else {
-        getRandomQuote(data);
-      }
-    });
-  console.log("action");
-};
 
 displayMovies();
