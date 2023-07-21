@@ -1,7 +1,5 @@
-
-var quoteUrl = "https://movie-quote-api.herokuapp.com/v1/quote?censored"; // fetch this for random
-//key: k_6fj2w74m
-// test comment
+// fetch this for random
+var quoteUrl = "https://movie-quote-api.herokuapp.com/v1/quote?censored";
 
 let forwardListener;
 let backwardListener;
@@ -127,8 +125,6 @@ function createMovieElement(title, year, genres, rating, plot, image) {
     moviePlot.textContent = plot || "There is no description for this movie.";
     movieRating.textContent = rating? "Rating: " + rating + " out of 10": ("No rating for this movie.");
     moviePoster.src = image;
-
-    
 }
 
 
@@ -140,42 +136,40 @@ function chooseGenre() {
 
 // resets the page when needed. 
 function clearGrid() {
-    let parent = document.getElementById("poster-column");
-    while(parent.firstChild) {
-        parent.removeChild(parent.firstChild);
-    }
+  let parent = document.getElementById("poster-column");
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
 }
 
-document.getElementById('mood-btn').addEventListener("click", () => chooseGenre());
+document
+  .getElementById("mood-btn")
+  .addEventListener("click", () => chooseGenre());
 
 // get random quote function targeting the H1 "quote" class:
-  function getRandomQuote(data) {
-    var randomQuote = document.querySelector("#random-element");
-    var quote = document.querySelector(".quote");
-      quote.innerText = '"' + data.quote + '"' + '  - ' + data.show;
-      console.log(data);
-      randomQuote.quote;
-      
-    for (var i = 1; i <= data.length; i++) {
-      getRandomQuote(quoteArray[i]);
-    }
-  }
-var onQuoteClick = function() {
-    var quoteUrl = "https://movie-quote-api.herokuapp.com/v1/quote?censored=true"; 
-    fetch(quoteUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.show === "The Wire") {
-            onQuoteClick()
-        } else {
-            getRandomQuote(data);
-        }
-      });
-      console.log("action");
-  }
-  
-// fetch random quote using URL:
-  document.querySelector(".random-quote-btn").addEventListener("click", onQuoteClick);
+function getRandomQuote(data) {
+  var randomQuote = document.querySelector("#random-element");
+  var quote = document.querySelector(".quote");
+  quote.innerText = '"' + data.quote + '"' + "  - " + data.show;
+  console.log(data);
+  randomQuote.quote;
 
-  displayMovies();
+  for (var i = 1; i <= data.length; i++) {
+    getRandomQuote(quoteArray[i]);
+  }
+}
+var onQuoteClick = function () {
+  var quoteUrl = "https://movie-quote-api.herokuapp.com/v1/quote?censored=true";
+  fetch(quoteUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.show === "The Wire") {
+        onQuoteClick();
+      } else {
+        getRandomQuote(data);
+      }
+    });
+  console.log("action");
+};
 
+displayMovies();

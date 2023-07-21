@@ -2,8 +2,8 @@
 ## A Movie For Every Mood!
 
 ## Purpose:
-Are you tired of Netflix suggesting your random films? Are you looking for a fun interactive way to choose a movie based off your mood? Well, we have the app for you. Welcome to MoodFlix! What is MoodFlix? It's a website that will recommend you movies based off your “MoodMoji”. Are you angry? Click the red angry emoji to see what we’ve got in store for you! Are you looking to laugh out loud? Click on our laughing emoji dropdown menu and see what we’ve got for you!
-
+Ever wonder what it would be like to choose a movie depending on what type of mood you're in? Well, MoodFlix can help! Simply select a "MoodMoji" from the dropdown menu to search movies that fit your mood. Once your MoodFlix upload to the page, you can hover over the images to reveal the movie title, genre, short description and rating. And if you're looking for a fun quote to share with your friends, click the "New Quote" button at the bottom of the page to view random quotes from popular movies and series.
+MoodFlix, let us help you get in the mood.
 
 <br>
 <div align="left">
@@ -19,7 +19,7 @@ Are you tired of Netflix suggesting your random films? Are you looking for a fun
   - 575px (Small devices - large cell phones)
 
 ## Website Link:
-https://dronetdevdesign.github.io/Dronet-DevDesign/
+https://bjennings90.github.io/Movie-Finder/
 
 ## This Website Created Using:
 * HTML 

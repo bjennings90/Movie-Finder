@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300&display=swap');
 
+/* VARIABLES */
 :root {
   --accent-color-white: #ffffff;
   --accent-color-lt-blue: #b1d8fc;
@@ -42,6 +43,7 @@ body {
   overscroll-behavior: none;
 }
 
+/* HEADER */
 #nav-container {
   overflow: hidden;
   width: 100%;
@@ -120,7 +122,7 @@ h1 {
   font-weight: 400;
 }
 
-/* dropdowns container */
+/* DROPDOWN CONTAINER */
 #form-dropdown {
   margin: auto;
   display: flex;
@@ -134,7 +136,7 @@ h1 {
 label {
   color: var(--accent-lt-gray);
   font-size: 20px;
-  padding: 0 8px 0 0;
+  padding-right: 8px;
 }
 
 select {
@@ -201,7 +203,7 @@ button:focus {
   color: var(--accent-color-white);
 }
 
-/* thumbnail section */
+/* MOVIE THUNBNAIL SECTION */
 .movie-thumbnails-container {
   margin: 40px auto;
 }
@@ -315,7 +317,7 @@ button:focus {
   font-size: 10px;
 }
 
-/* random quote */
+/* RANDOM QUOTE SECTION */
 .random-quote {
   position: relative;
   text-align: center;
@@ -386,6 +388,7 @@ button:focus {
   border: 2px solid var(--accent-bright-red);
   margin-top: 20px;
 }
+
 .TMDB {
   margin: 0px 48rem;
   width: 150px;
