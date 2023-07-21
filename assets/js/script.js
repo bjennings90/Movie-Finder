@@ -6,54 +6,87 @@ var quoteUrl = "https://movie-quote-api.herokuapp.com/v1/quote?censored"; // fet
 let forwardListener;
 let backwardListener;
 
+let genreIdToNameMap = new Map();
+let genreNameToIdMap = new Map();
+
 // This is the comedy movie display 
-function displayMovies(genre) {
-    // let movieUrl ='https://imdb-api.com/API/AdvancedSearch/k_5mdou5db?title_type=feature,tv_movie&count=100&genres=' + genre
-    let movieUrl = 'https://api.themoviedb.org/3/movie/popular?api_key=e500078a0f3e60374b44f445454ec0aa' 
-    console.log(movieUrl);
-    fetch(movieUrl)
+function displayMovies(genreType) {
+    let genreMovieUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=e500078a0f3e60374b44f445454ec0aa&with_genres=' + genreType + '&page=';
+    let genreAPIMap = 'https://api.themoviedb.org/3/genre/movie/list?api_key=e500078a0f3e60374b44f445454ec0aa';
+    let mainPageMovieUrl = 'https://api.themoviedb.org/3/movie/popular?api_key=e500078a0f3e60374b44f445454ec0aa&&page=';
+    fetch(genreAPIMap)
         .then(response => response.json())
-        .then(data => {
-            window.localStorage.setItem('Movies', JSON.stringify(data));
-            displayTwelve(0);
-        });
+        .then(data => genreTable(JSON.stringify(data)));
+
+    if (genreType === null) {
+        getMovieData(1, mainPageMovieUrl);
+    } else {
+        getMovieData(1, genreMovieUrl);
+    }
+};    
+
+
+function genreTable(dataStorage) {
+    let data = JSON.parse(dataStorage);
+    if (!data) return
+    for (let i = 0; i < data.genres.length ; i++) {
+        let genreId = data.genres[i].id;
+        let genreName = data.genres[i].name;
+
+        genreIdToNameMap.set(genreId, genreName);
+        genreNameToIdMap.set(genreName.toLowerCase(), genreId);
+    }
+    console.log(genreIdToNameMap);
+    console.log(genreNameToIdMap);
 }
 
-function displayTwelve(start){
+function getMovieData(page, url) {
+    return fetch(url + page)
+        .then(response => response.json())
+        .then(response => displayPage(page, url, response));
+    
+}
+
+function displayPage(pageNumber, url, data) {
     clearGrid();
-    let dataStorage = window.localStorage.getItem('Movies');
-    let data = JSON.parse(dataStorage);
     if (!data || !data.results) return
-    for (let i = start; i < start + 12; i++) {
+    for (let i = 0; i < data.results.length; i++) {
         let image = 'https://image.tmdb.org/t/p/w300' + data.results[i].poster_path.replace(/\/original\//g, "/170x250/");
         let title = data.results[i].title; 
-        let year = data.results[i].release_date;
-        let genres = data.results[i].genre_id;
+        let year = data.results[i].release_date.substr(0,4);
+        let genres = data.results[i].genre_ids;
+        let genreNames = [];
+        for (let j = 0; j < genres.length; j++) { 
+            genreNames.push(genreIdToNameMap.get(genres[j]));
+        }
+ 
         let rating = data.results[i].vote_average;
         let plot = data.results[i].overview;
 
-        createMovieElement(title, year, genres, rating, plot, image); 
+        createMovieElement(title, year, genreNames, rating, plot, image); 
     }
-    if (start === 0 ) {
+
+    if (pageNumber === 1 ) {
         document.getElementById("previous-btn").style.display = "none";
     } else {
         document.getElementById("previous-btn").style.display = "block";
     }
 
-    // Alter event listener for display next 12 button with correct offset
+    // moves the button forward one page or back one page
     if (forwardListener != null) {
         document.getElementById('next-btn').removeEventListener("click", forwardListener);
     }
-    forwardListener = () => displayTwelve(start+12);
+    forwardListener = () => getMovieData(pageNumber + 1, url);
     document.getElementById("next-btn").addEventListener("click", forwardListener);
 
     if (backwardListener != null) {
         document.getElementById("previous-btn").removeEventListener("click", backwardListener);        
     }
-    backwardListener = () => displayTwelve(start - 12);
-    console.log(backwardListener);
+    backwardListener = () => getMovieData(pageNumber - 1, url);
     document.getElementById("previous-btn").addEventListener("click", backwardListener);
 }
+
+
 
 // creating elements for the Genre movie selection
 function createMovieElement(title, year, genres, rating, plot, image) {
@@ -68,6 +101,7 @@ function createMovieElement(title, year, genres, rating, plot, image) {
     let genreElement = document.createElement("h6");
     let moviePlot = document.createElement("p");
     let movieRating = document.createElement("p");
+   
     
     // Recreating the movie card HTML format
     colThumbnail.appendChild(imgElement);
@@ -87,47 +121,23 @@ function createMovieElement(title, year, genres, rating, plot, image) {
     moviePlot.setAttribute("class", "description");
     movieRating.setAttribute("class", "rating");
 
-    movieName.textContent = title + " " + year;
+
+    movieName.textContent = title + " " + "(" +  year + ")";
     genreElement.textContent = genres;
     moviePlot.textContent = plot || "There is no description for this movie.";
     movieRating.textContent = rating? "Rating: " + rating + " out of 10": ("No rating for this movie.");
     moviePoster.src = image;
+
     
 }
 
+
 // This function will show the selected movie genre when the user chooses it from the drop down menu
 function chooseGenre() {
-    let genreType = document.getElementById("select-emoji");
-    let genreChoice = genreType.value;
-
-    switch(genreChoice) {
-        case "comedy":
-            displayMovies("comedy");
-            break;
-        case "drama":
-            displayMovies("drama");
-            break;
-        case "romance":
-            displayMovies("romance");
-            break;
-        case "sci-fi":
-            displayMovies("sci_fi");
-            break;
-        case "horror":
-            displayMovies("horror");
-            break;
-        case "action":
-            displayMovies("action");
-            break;
-        case "family":
-            displayMovies("family");
-            break;
-        case "documentaries":
-            displayMovies("documentary");
-            break;
-    }   
-            
+    let genreType = document.getElementById("select-emoji").value;
+    displayMovies(genreNameToIdMap.get(genreType));
 }
+
 // resets the page when needed. 
 function clearGrid() {
     let parent = document.getElementById("poster-column");
@@ -167,5 +177,5 @@ var onQuoteClick = function() {
 // fetch random quote using URL:
   document.querySelector(".random-quote-btn").addEventListener("click", onQuoteClick);
 
-  displayMovies("action");
+  displayMovies();
 

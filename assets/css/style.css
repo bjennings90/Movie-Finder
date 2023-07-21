@@ -290,7 +290,7 @@ button:focus {
 .genre {
   position: relative;
   font-family: var(--genre);
-  font-size: 12px;
+  font-size: 9.7px;
   color: var(--accent-color-lt-blue);
 }
 
@@ -385,4 +385,8 @@ button:focus {
   transition: all 0.5s;
   border: 2px solid var(--accent-bright-red);
   margin-top: 20px;
+}
+.TMDB {
+  margin: 0px 48rem;
+  width: 150px;
 }
